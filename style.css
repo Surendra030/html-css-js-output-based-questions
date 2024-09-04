@@ -8,14 +8,14 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
-    padding: 2%;
+    padding: 1%;
 }
 
 .question-card {
     background: rgb(166, 244, 244);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10%;
+    padding: 5%;
     margin-bottom: 20px;
 }
 
@@ -47,13 +47,13 @@ body {
 .answer-text {
     font-size: 1.0em;
     color: black;
+    
 }
 
 .answer {
     font-weight: bold;
     color:black;
     font-size: 1.0em;
-    /* Color for the answer text */
 }
 
 button {
@@ -73,4 +73,6 @@ button {
 .btn_sucess_color{
     background-color: #00ff6e;
 }
+
+
 

@@ -6,9 +6,7 @@ const next_btn = document.querySelector(".change_btn");
 const copy_btn = document.querySelector(".copy_btn");
 const show_ans_btn = document.querySelector(".show_ans_btn");
 
-const card = document.querySelector(".question-card");
 const question_no = document.querySelector("h4");
-const question_title = document.querySelector(".question-text");
 const code_snippet = document.querySelector("code");
 const answer_text = document.querySelector(".answer");
 
@@ -19,7 +17,7 @@ function toggle_answer() {
 
         answer_text.style.display = "inline";
         show_ans_btn.innerHTML = "Hide"
-    } else {
+    } else{
 
         answer_text.style.display = "none";
         show_ans_btn.innerHTML = "Show"
@@ -79,6 +77,8 @@ function changeQuestion() {
     question_no.innerHTML = `Question : ${question_data.serial}`;
     code_snippet.innerText = question_data.question;
     answer_text.innerText = question_data.answer;
+    answer_text.style.display = "none";
+    show_ans_btn.innerHTML = "Show";
 
 
 }
