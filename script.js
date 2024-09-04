@@ -32,10 +32,11 @@ function copy_to_clipboard() {
     const textToCopy = code_snippet.innerText;
     navigator.clipboard.writeText(textToCopy)
         .then(() => {
-            copy_btn.style.backgroundColor = " #00ff6e";
+            copy_btn.classList.remove("btn_background_color")
+            copy_btn.classList.add("btn_sucess_color");
             setTimeout(() => {
-                copy_btn.style.backgroundColor = "#3500e1";
-
+                copy_btn.classList.add("btn_background_color")
+                copy_btn.classList.remove("btn_sucess_color");
             }, 1000);
         })
         .catch(err => {
@@ -78,6 +79,7 @@ function changeQuestion() {
     question_no.innerHTML = `Question : ${question_data.serial}`;
     code_snippet.innerText = question_data.question;
     answer_text.innerText = question_data.answer;
+
 
 }
 

@@ -61,5 +61,14 @@ button {
     font-weight: bold;
     margin: 1%;
     color: black;
+}
+
+
+.btn_background_color{
     background: linear-gradient(90deg, #abdcff, #0396ff);
 }
+
+.btn_sucess_color{
+    background-color: #00ff6e;
+}
+
