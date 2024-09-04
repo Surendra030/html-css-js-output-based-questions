@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     padding: 2%;
 }
@@ -19,9 +19,10 @@ body {
     margin-bottom: 20px;
 }
 
-.question-card h2 {
+.question-card h4 {
     margin-top: 0;
     color: #333;
+
 }
 
 .question-text {
@@ -40,17 +41,18 @@ body {
     color: black;
     font-weight: bold;
     white-space: pre-wrap;
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 
 .answer-text {
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: black;
 }
 
 .answer {
     font-weight: bold;
-    color: #5734c7;
+    color:black;
+    font-size: 1.0em;
     /* Color for the answer text */
 }
 

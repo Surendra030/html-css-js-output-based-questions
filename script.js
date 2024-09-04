@@ -7,7 +7,7 @@ const copy_btn = document.querySelector(".copy_btn");
 const show_ans_btn = document.querySelector(".show_ans_btn");
 
 const card = document.querySelector(".question-card");
-const question_no = document.querySelector("h2");
+const question_no = document.querySelector("h4");
 const question_title = document.querySelector(".question-text");
 const code_snippet = document.querySelector("code");
 const answer_text = document.querySelector(".answer");
