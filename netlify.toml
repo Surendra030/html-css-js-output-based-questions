@@ -1,0 +1,11 @@
+# netlify.toml
+
+[build]
+  # Specify the folder where Netlify should look for functions
+  functions = "functions"
+
+[[redirects]]
+  # Redirect requests from /api/* to Netlify Functions
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
