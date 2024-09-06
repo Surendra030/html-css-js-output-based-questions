@@ -1,5 +1,5 @@
 // functions/api.js
-const code_base_questions = require('./output_based.js'); // Import the questions
+const code_base_questions = require('./output_based.js'); // Use CommonJS syntax
 
 exports.handler = async function (event, context) {
   if (event.httpMethod === 'GET') {

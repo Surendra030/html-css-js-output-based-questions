@@ -6958,4 +6958,4 @@ var code_base_questions = [
     }
 ]
 
-export default code_base_questions;
+module.exports =  code_base_questions;
