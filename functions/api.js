@@ -1,6 +1,6 @@
-// functions/api.js
+const code_base_questions = require('./output_based.js');
 
-const code_base_questions = require('./output_based.js'); // Use CommonJS syntax
+let questionsData = [...code_base_questions];
 
 exports.handler = async function (event, context) {
   // Define CORS headers
@@ -24,15 +24,35 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(code_base_questions) // Send data as JSON
+      body: JSON.stringify(questionsData) // Send data as JSON
     };
   } else if (event.httpMethod === 'POST') {
-    const body = JSON.parse(event.body);
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ message: `You sent: ${body.name}` })
-    };
+    try {
+      const body = JSON.parse(event.body);
+
+      // Find and update the question
+      const questionIndex = questionsData.findIndex(q => q.serial === body.serial);
+      if (questionIndex !== -1) {
+        questionsData[questionIndex] = { ...questionsData[questionIndex], flag: body.flag };
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({ message: 'Flag data updated successfully' })
+        };
+      } else {
+        return {
+          statusCode: 404,
+          headers,
+          body: JSON.stringify({ message: 'Question not found' })
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ message: 'Invalid request', error: error.message })
+      };
+    }
   } else {
     return {
       statusCode: 405,
