@@ -36,6 +36,7 @@ async function fetchData() {
     }
 }
 
+
 // Function to toggle answer visibility
 function toggle_answer() {
     if (answer_text.style.display === "none" || answer_text.style.display === "") {
@@ -89,15 +90,16 @@ function toggle_flag(flag_type) {
     }
 }
 
-// Function to update flag data on the server
 async function updateFlagData(question) {
     try {
-        const response = await fetch("https://html-css-js-practice-qs.netlify.app/.netlify/functions/updateFlag", {
+        const response = await fetch("https://html-css-js-practice-qs.netlify.app/.netlify/functions/api?action=updateFlag", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(question),
+            body: JSON.stringify(question), // Send updated flag data
+        
+        
         });
 
         if (!response.ok) {
@@ -109,6 +111,7 @@ async function updateFlagData(question) {
         console.error('Error updating flag data:', error);
     }
 }
+
 
 // Function to change to a new random question
 async function changeQuestion() {

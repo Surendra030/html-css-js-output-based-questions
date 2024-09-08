@@ -3,16 +3,15 @@ const code_base_questions = require('./output_based.js');
 let questionsData = [...code_base_questions];
 
 exports.handler = async function (event, context) {
-  // Define CORS headers
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-    'Access-Control-Allow-Methods': 'OPTIONS, POST, GET', // Allow specific HTTP methods
-    'Access-Control-Allow-Headers': 'Content-Type' // Allow specific headers
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+    'Access-Control-Allow-Headers': 'Content-Type'
   };
 
+  // Handle CORS preflight requests
   if (event.httpMethod === 'OPTIONS') {
-    // Handle CORS preflight requests
     return {
       statusCode: 200,
       headers,
@@ -20,13 +19,19 @@ exports.handler = async function (event, context) {
     };
   }
 
-  if (event.httpMethod === 'GET') {
+  const params = event.queryStringParameters || {};
+  
+  // Handle GET request without query (for fetching all questions)
+  if (event.httpMethod === 'GET' && !params.action) {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(questionsData) // Send data as JSON
+      body: JSON.stringify(questionsData)
     };
-  } else if (event.httpMethod === 'POST') {
+  }
+
+  // Handle POST request with query action (for updating flags)
+  if (event.httpMethod === 'POST' && params.action === 'updateFlag') {
     try {
       const body = JSON.parse(event.body);
 
@@ -54,10 +59,11 @@ exports.handler = async function (event, context) {
       };
     }
   } else {
+    // Handle unsupported methods
     return {
       statusCode: 405,
       headers,
-      body: JSON.stringify({ message: "Method Not Allowed" })
+      body: JSON.stringify({ message: 'Method Not Allowed' })
     };
   }
 };
