@@ -11,6 +11,23 @@ body {
     padding: 1%;
 }
 
+.nav-bar>ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    list-style: none;
+    
+}
+
+li>a{
+    border: black 1px solid;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
 .question-card {
     background: rgb(166, 244, 244);
     border-radius: 8px;
